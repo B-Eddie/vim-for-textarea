@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vim-For-Textarea</title>
+  <style>
+    :root { --primary: #00d4ff; --border: #e0e0e0; --hover: #f5f5f5; --bg: #fff; --text: #333; }
+    *, *::before, *::after { box-sizing: border-box; }
+    html { background: #f5f7fa; }
+    body {
+      width: 380px; max-height: 800px; padding: 20px;
+      background: var(--bg); box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      border-radius: 8px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px; color: var(--text); overflow-y: auto;
+    }
+    .header { display: flex; align-items: center; margin-bottom: 16px; padding-bottom: 8px; border-bottom: 2px solid var(--primary); }
+    .header h1 { margin: 0; font-size: 18px; font-weight: 600; color: var(--primary); }
+    .section { margin-bottom: 16px; }
+    .section-title { font-size: 13px; font-weight: 600; margin: 0 0 8px 0; color: #666; text-transform: uppercase; letter-spacing: 0.5px; }
+    table { width: 100%; border-collapse: collapse; }
+    table tr { border-bottom: 1px solid var(--border); }
+    table tr:hover { background: var(--hover); }
+    table td { padding: 8px 6px; vertical-align: middle; }
+    table td:first-child { font-size: 13px; }
+    select {
+      padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px;
+      background: #fff; font-size: 13px; width: 100%;
+    }
+    .switch { position: relative; display: inline-block; width: 36px; height: 20px; }
+    .switch input { opacity: 0; width: 0; height: 0; }
+    .slider {
+      position: absolute; cursor: pointer; top: 0; left: 0; right: 0; bottom: 0;
+      background-color: #ccc; transition: 0.3s; border-radius: 20px;
+    }
+    .slider:before {
+      position: absolute; content: ""; height: 14px; width: 14px;
+      left: 3px; bottom: 3px; background: white; transition: 0.3s; border-radius: 50%;
+    }
+    .switch input:checked + .slider { background-color: var(--primary); }
+    .switch input:checked + .slider:before { transform: translateX(16px); }
+    .btn {
+      padding: 6px 10px; border: 1px solid var(--border); border-radius: 4px;
+      background: #fff; cursor: pointer; font-size: 12px; color: var(--text);
+      text-decoration: none; display: inline-block;
+    }
+    .btn:hover { background: var(--hover); }
+    .btn.primary { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .btn.primary:hover { opacity: 0.9; }
+    .actions { display: flex; gap: 6px; justify-content: center; padding-top: 8px; }
+    textarea {
+      width: 100%; min-height: 60px; font-family: monospace; font-size: 12px;
+      padding: 6px; border: 1px solid var(--border); border-radius: 4px; resize: vertical;
+    }
+    .tag-list { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+    .tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      background: #e8f4f8; border: 1px solid #b3e0f0; border-radius: 12px;
+      padding: 2px 8px; font-size: 11px; color: #006680;
+    }
+    .tag button { background: none; border: none; color: #006680; cursor: pointer; font-size: 13px; padding: 0; }
+    .tag button:hover { color: #cc0000; }
+    .add-tag { display: flex; gap: 4px; margin-top: 6px; }
+    .add-tag input { flex: 1; padding: 4px 8px; border: 1px solid var(--border); border-radius: 4px; font-size: 12px; }
+    .add-tag button { padding: 4px 8px; }
+    .site-status { display: flex; align-items: center; gap: 6px; margin-bottom: 12px; padding: 8px; background: #f0f7ff; border-radius: 6px; font-size: 13px; }
+    .site-status .dot { width: 8px; height: 8px; border-radius: 50%; }
+    .site-status .dot.on { background: #28a745; }
+    .site-status .dot.off { background: #dc3545; }
+    footer { padding-top: 8px; font-size: 11px; color: #999; text-align: center; line-height: 1.4; }
+    a { color: var(--primary); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    .help-row td { text-align: center; padding-top: 8px; border-top: 1px solid var(--border); }
+  </style>
+</head>
+<body>
+  <div class="header">
+    <h1>Vim-For-Textarea</h1>
+  </div>
+
+  <div class="section" id="siteSection">
+    <div class="site-status" id="siteStatus">
+      <span class="dot" id="siteDot"></span>
+      <span id="siteName">Current site</span>
+      <label class="switch" style="margin-left:auto;">
+        <input type="checkbox" id="siteToggle">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Options</h2>
+    <table>
+      <tr>
+        <td>Vim enabled</td>
+        <td style="text-align:right;">
+          <label class="switch">
+            <input type="checkbox" id="switch1">
+            <span class="slider"></span>
+          </label>
+        </td>
+      </tr>
+      <tr>
+        <td>Theme</td>
+        <td style="text-align:right;">
+          <select id="themeDropdown">
+            <option value="vim">Vim (Dark Blue)</option>
+            <option value="dark">Dark</option>
+            <option value="light">Light</option>
+            <option value="dracula">Dracula</option>
+            <option value="monokai">Monokai</option>
+            <option value="solarized">Solarized</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td>Mode indicator</td>
+        <td style="text-align:right;">
+          <select id="indicatorDropdown">
+            <option value="bottom">Bottom bar</option>
+            <option value="editor">Above editor</option>
+            <option value="hidden">Hidden</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+  </div>
+
+  <div class="section">
+    <h2 class="section-title">Ignored Websites</h2>
+    <div class="tag-list" id="blacklistTags"></div>
+    <button class="btn primary" id="blockCurrentSite" style="width:100%;margin-top:6px;">Block this site</button>
+  </div>
+
+  <div class="actions">
+    <a class="btn" href="https://vim.rtorr.com/" target="_blank">Vim Help</a>
+    <button class="btn" id="openMotionsEditor">Motions Editor</button>
+    <a class="btn" href="advanced.html">Advanced</a>
+  </div>
+
+  <footer>
+    Vim-For-Textarea – Vim motions for any text input<br>
+  </footer>
+  <script src="popup.js"></script>
+</body>
+</html>
