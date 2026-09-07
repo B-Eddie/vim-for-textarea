@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Vim-For-Textarea: Vim motions in every text field on the web</title>
+<meta name="description" content="Vim-For-Textarea brings Vim navigation and editing to any textarea, input, or contenteditable element on any website." />
+<link rel="icon" type="image/png" href="assets/icon-128.png" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:opsz,wght@9..40,500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+<header class="nav-wrap">
+  <nav class="nav-pill" aria-label="Primary">
+    <a class="brand" href="#top" aria-label="Vim-For-Textarea home">
+      <span class="brand-mark" aria-hidden="true">V</span>
+      <span class="brand-word">Vim-For-Textarea</span>
+    </a>
+    <div class="nav-links">
+      <a href="#features">Features</a>
+      <a href="#demo">Demo</a>
+      <a href="#motions">Motions</a>
+      <a href="#themes">Themes</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <div class="nav-cta">
+      <a class="ghost-icon" href="https://github.com/B-Eddie/vim-for-textarea" target="_blank" rel="noopener" aria-label="View source on GitHub">
+        <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/></svg>
+      </a>
+      <a class="btn btn-primary btn-sm" href="https://chromewebstore.google.com/detail/hcpiljcoopaafnopklflnoendfhhakaa?authuser=0&hl=en" target="_blank" rel="noopener">Add to Chrome</a>
+      <button class="nav-toggle" aria-label="Open menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+  <div class="nav-mobile" hidden>
+    <a href="#features">Features</a>
+    <a href="#demo">Demo</a>
+    <a href="#motions">Motions</a>
+    <a href="#themes">Themes</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://github.com/B-Eddie/vim-for-textarea" target="_blank" rel="noopener">GitHub</a>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-copy">
+      <span class="tag">For Chrome</span>
+      <h1 class="display">VIM<br />EVERYWHERE</h1>
+      <p class="lede">Vim motions in every textarea, input, and editor on the web. Press Esc and edit.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/hcpiljcoopaafnopklflnoendfhhakaa?authuser=0&hl=en" target="_blank" rel="noopener">Add to Chrome. Free.</a>
+        <a class="btn btn-secondary" href="https://github.com/B-Eddie/vim-for-textarea" target="_blank" rel="noopener">View source</a>
+      </div>
+      <p class="micro">Free and open source. Works on any site with a text field.</p>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <div class="halftone">
+        <div class="halftone-keys">
+          <span class="hk">esc</span>
+          <span class="hk">h j k l</span>
+          <span class="hk">w b e</span>
+        </div>
+      </div>
+      <div class="hero-chip">
+        <span class="mode-dot"></span>
+        <span>-- NORMAL --</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE IT WORKS -->
+  <section class="strip-card reveal">
+    <p class="strip-label">Works anywhere you type</p>
+    <ul class="strip-row">
+      <li>Textareas</li>
+      <li>Inputs</li>
+      <li>Contenteditable</li>
+      <li>Web IDEs</li>
+      <li>GitHub issues</li>
+      <li>Any form</li>
+    </ul>
+  </section>
+
+  <!-- STATS -->
+  <section class="stats reveal" aria-label="Highlights">
+    <div class="stat">
+      <p class="stat-label">Input surfaces</p>
+      <p class="stat-value">3</p>
+      <p class="stat-note">Textarea, input, contenteditable</p>
+    </div>
+    <div class="stat">
+      <p class="stat-label">Core operators</p>
+      <p class="stat-value">d c y</p>
+      <p class="stat-note">With text objects like iw and i"</p>
+    </div>
+    <div class="stat">
+      <p class="stat-label">Built in themes</p>
+      <p class="stat-value">6</p>
+      <p class="stat-note">Vim, Dracula, Monokai and more</p>
+    </div>
+    <div class="stat">
+      <p class="stat-label">Site control</p>
+      <p class="stat-value">Per site</p>
+      <p class="stat-note">Toggle and blacklist included</p>
+    </div>
+  </section>
+
+  <!-- FEATURES BENTO -->
+  <section id="features" class="section">
+    <h2 class="h-2xl reveal">BUILT FOR<br />VIM HANDS</h2>
+    <div class="bento">
+      <article class="card card-plasma reveal">
+        <span class="tag">Modes</span>
+        <h3>Normal, Visual, line Visual</h3>
+        <p>Full modal editing inside any field. Character and line visual selection with operators that compose the way Vim does.</p>
+        <p class="plasma-keys">v V d c y p u</p>
+      </article>
+      <article class="card reveal">
+        <span class="tag">Editor</span>
+        <h3>Motions Editor</h3>
+        <p>Remap every binding in the built in editor. Changes validate live and apply instantly.</p>
+      </article>
+      <article class="card reveal">
+        <span class="tag">Control</span>
+        <h3>Per site toggle</h3>
+        <p>Enable or disable Vim for the current site from the popup. Blacklist patterns like *.google.com stay off forever.</p>
+      </article>
+      <article class="card card-ember reveal">
+        <span class="tag tag-dark">Parsing</span>
+        <h3>Trie based key parser</h3>
+        <p>Multi key sequences resolve in the capture phase, so gg, f{char}, and counts feel instant, even in heavy pages.</p>
+      </article>
+      <article class="card reveal">
+        <span class="tag">Display</span>
+        <h3>Line numbers and themes</h3>
+        <p>Optional line numbers over any field, plus six themes that match your setup instead of fighting it.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- LIVE DEMO -->
+  <section id="demo" class="section">
+    <h2 class="h-2xl reveal">TRY IT HERE</h2>
+    <div class="demo-grid">
+      <div class="demo-copy reveal">
+        <p class="demo-text">This box behaves like the extension. Click inside, press <kbd>Esc</kbd> for Normal mode, move with <kbd>h</kbd><kbd>j</kbd><kbd>k</kbd><kbd>l</kbd>, then press <kbd>i</kbd> to type again.</p>
+        <ul class="demo-list">
+          <li><kbd>h j k l</kbd> move by character and line</li>
+          <li><kbd>w b e</kbd> hop across words</li>
+          <li><kbd>0 $</kbd> jump to line edges</li>
+          <li><kbd>x</kbd> delete a character</li>
+        </ul>
+      </div>
+      <div class="demo-box reveal">
+        <div class="demo-bar">
+          <span id="demoMode" class="tag">Insert</span>
+          <span class="demo-hint">click, then press Esc</span>
+        </div>
+        <textarea id="demoArea" rows="9" spellcheck="false">Vim-For-Textarea gives you Vim motions on every site.
+
+Click here and press Esc.
+Move with h j k l and w b e.
+Press i to return to Insert mode.</textarea>
+      </div>
+    </div>
+  </section>
+
+  <!-- MOTIONS -->
+  <section id="motions" class="section">
+    <h2 class="h-2xl reveal">THE CORE SET</h2>
+    <div class="motion-grid">
+      <article class="card reveal">
+        <span class="tag">Move</span>
+        <h3>Navigate</h3>
+        <dl class="keys">
+          <div><dt>h j k l</dt><dd>Left, down, up, right</dd></div>
+          <div><dt>w b e</dt><dd>Word forward, back, end</dd></div>
+          <div><dt>0 ^ $</dt><dd>Line start, first non blank, end</dd></div>
+          <div><dt>gg G</dt><dd>First and last line</dd></div>
+          <div><dt>f F</dt><dd>Find character forward, back</dd></div>
+        </dl>
+      </article>
+      <article class="card reveal">
+        <span class="tag">Act</span>
+        <h3>Operators</h3>
+        <dl class="keys">
+          <div><dt>d</dt><dd>Delete with any motion</dd></div>
+          <div><dt>c</dt><dd>Change with any motion</dd></div>
+          <div><dt>y p P</dt><dd>Yank, paste after, paste before</dd></div>
+          <div><dt>iw i" a"</dt><dd>Text objects that compose</dd></div>
+          <div><dt>u ctrl+r</dt><dd>Undo and redo</dd></div>
+        </dl>
+      </article>
+      <article class="card reveal">
+        <span class="tag">Modes</span>
+        <h3>Edit and select</h3>
+        <dl class="keys">
+          <div><dt>i a o</dt><dd>Insert before, after, open line</dd></div>
+          <div><dt>v V</dt><dd>Visual and visual line</dd></div>
+          <div><dt>x ~</dt><dd>Delete character, toggle case</dd></div>
+          <div><dt>Esc</dt><dd>Back to Normal mode</dd></div>
+          <div><dt>ctrl+o</dt><dd>One Normal command, stay in Insert</dd></div>
+        </dl>
+      </article>
+    </div>
+    <p class="section-note reveal">Everything above is remappable in the Motions Editor.</p>
+  </section>
+
+  <!-- THEMES -->
+  <section id="themes" class="section">
+    <h2 class="h-2xl reveal">SIX THEMES</h2>
+    <div class="theme-grid reveal">
+      <div class="theme" data-theme="vim"><span class="sw"></span>Vim</div>
+      <div class="theme" data-theme="dark"><span class="sw"></span>Dark</div>
+      <div class="theme" data-theme="light"><span class="sw"></span>Light</div>
+      <div class="theme" data-theme="dracula"><span class="sw"></span>Dracula</div>
+      <div class="theme" data-theme="monokai"><span class="sw"></span>Monokai</div>
+      <div class="theme" data-theme="solarized"><span class="sw"></span>Solarized</div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section class="section">
+    <h2 class="h-2xl reveal">UP IN A MINUTE</h2>
+    <div class="install reveal">
+      <ol>
+        <li><strong>Add it from the Chrome Web Store.</strong> One click, no account, no setup wizard.</li>
+        <li><strong>Click any text field.</strong> Textareas, inputs, and rich editors all respond.</li>
+        <li><strong>Press Esc and move.</strong> Use h j k l and w b e. Press i to type.</li>
+      </ol>
+      <div class="install-side">
+        <p class="install-big">Esc</p>
+        <p>The only shortcut you need to remember on day one.</p>
+        <a class="btn btn-primary" href="https://chromewebstore.google.com/detail/hcpiljcoopaafnopklflnoendfhhakaa?authuser=0&hl=en" target="_blank" rel="noopener">Add to Chrome. Free.</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="faq" class="section">
+    <h2 class="h-2xl reveal">QUESTIONS</h2>
+    <div class="faq reveal">
+      <details open>
+        <summary>Which sites does it work on?</summary>
+        <p>Any page with a textarea, text input, or contenteditable element. GitHub, Gmail, Notion, Linear, docs, forms, and web IDEs all work.</p>
+      </details>
+      <details>
+        <summary>Can I turn it off for specific sites?</summary>
+        <p>Yes. Toggle the current site from the popup, or add blacklist patterns such as *.google.com for places where Vim should never activate.</p>
+      </details>
+      <details>
+        <summary>Can I change the key bindings?</summary>
+        <p>Yes. Open the Motions Editor from the popup to remap bindings, operators, text objects, and commands with live validation.</p>
+      </details>
+      <details>
+        <summary>What permissions does it need?</summary>
+        <p>Storage first. It saves your settings, theme, blacklist, and custom bindings locally, with clipboard and tab access for paste and per site state.</p>
+      </details>
+      <details>
+        <summary>Is it free and open source?</summary>
+        <p>Yes. The code is public on GitHub and contributions are welcome through issues and pull requests.</p>
+      </details>
+    </div>
+  </section>
+
+  <!-- FINAL CTA -->
+  <section class="final reveal">
+    <span class="tag">Free download</span>
+    <h2>STOP REACHING<br />FOR THE MOUSE</h2>
+    <p>Every comment box is a Vim buffer now. Install once and edit the whole web without leaving home row.</p>
+    <form class="final-row" action="https://chromewebstore.google.com/detail/hcpiljcoopaafnopklflnoendfhhakaa?authuser=0&hl=en" method="get" target="_blank" rel="noopener">
+      <input type="email" name="email" placeholder="you@example.com for launch notes" aria-label="Email for launch notes" />
+      <button class="btn btn-primary" type="submit">Get the extension</button>
+    </form>
+    <p class="micro-light">Prefer code first? <a href="https://github.com/B-Eddie/vim-for-textarea" target="_blank" rel="noopener">Browse the source on GitHub.</a></p>
+  </section>
+
+</main>
+
+<footer>
+  <div class="foot-inner">
+    <a class="brand" href="#top">
+      <span class="brand-mark" aria-hidden="true">V</span>
+      <span class="brand-word">Vim-For-Textarea</span>
+    </a>
+    <div class="foot-links">
+      <a href="https://chromewebstore.google.com/detail/hcpiljcoopaafnopklflnoendfhhakaa?authuser=0&hl=en" target="_blank" rel="noopener">Chrome Web Store</a>
+      <a href="https://github.com/B-Eddie/vim-for-textarea" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://github.com/B-Eddie/vim-for-textarea/issues" target="_blank" rel="noopener">Issues</a>
+    </div>
+    <p class="foot-note">Vim motions for any text input. Caldera styled, shadowless by design.</p>
+  </div>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
